@@ -1,20 +1,12 @@
-$(document).ready(function() {
-  $.ajax({
-    url: 'https://flynn.boolean.careers/exercises/api/array/music',
-    method: 'GET',
-    success: function(data) {
-      for (var i = 0; i < 10; i++) {
-        this.dischi.push({
-          src: data.poster,
-          title: data.title,
-          author: data.author,
-          genre: data.genre,
-          year: data.year
-        })
-      }
-    },
-    error: function(){
-      alert("si e verifivato un errore");
-    }
-  })
+var app = new Vue({
+  el: "#app",
+  data:{
+    dischi: ""
+  },
+  mounted(){
+    axios.get("https://flynn.boolean.careers/exercises/api/array/music").then(result => {
+      this.dischi = result.data.response;
+    }).catch(error => console.log('errore'));
+    console.log(this.dischi);
+  }
 });

@@ -4,7 +4,8 @@
         <meta charset="utf-8">
         <title>ex-dischi-musicali</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
     </head>
@@ -15,13 +16,13 @@
             </div>
         </header>
 
-        <div class="cds-container container" id="elenco">
+        <div class="cds-container container" id="app">
             <!-- Disco ad esempio -->
             <div v-for="(disco, index) in dischi" class="cd">
-                <img src="dischi.src" alt="copertina">
-                <h3 class="title">{{dischi.title}}</h3>
-                <span class="author">{{dischi.author}}</span>
-                <span class="year">{{dischi.year}}</span>
+                <img :src="disco.poster" alt="copertina">
+                <h3 class="title">{{disco.title}}</h3>
+                <span class="author">{{disco.author}}</span>
+                <span class="year">{{disco.year}}</span>
             </div>
         </div>
 

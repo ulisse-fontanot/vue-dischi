@@ -1,8 +1,9 @@
 var app = new Vue({
   el: "#app",
   data:{
-    dischi: "",
-    generi: []
+    dischi: [],
+    generi: ['TUTTI'],
+    genereSelezionato: "TUTTI"
   },
   mounted(){
     axios.get("https://flynn.boolean.careers/exercises/api/array/music").then(result => {
@@ -15,14 +16,6 @@ var app = new Vue({
         }
       })
       console.log(this.generi);
-      // -------------------
-      this.generi.forEach((element) => {
-        document.getElementById('genere').innerHTML +=`
-        <option>${element}</option>
-        `
-      });
-      // -------------------
-      
     })
     .catch(error => console.log('errore'));
   }

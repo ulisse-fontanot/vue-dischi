@@ -10,23 +10,23 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <header>
-            <div class="container">
-                <img src="logo.png" alt="logo"/>
-                <select id="genere">
-                  <option>TUTTI</option>
-                </select>
-            </div>
-        </header>
 
         <div class="cds-container container" id="app">
-            <!-- Disco ad esempio -->
-            <div v-for="(disco, index) in dischi" class="cd">
-                <img :src="disco.poster" alt="copertina">
-                <h3 class="title">{{disco.title}}</h3>
-                <span class="author">{{disco.author}}</span>
-                <span class="year">{{disco.year}}</span>
-            </div>
+          <header>
+              <div class="container">
+                  <img src="logo.png" alt="logo"/>
+                  <select id="genere" v-model="genereSelezionato">
+                    <option v-for="genere in generi">{{genere}}</option>
+                  </select>
+              </div>
+          </header>
+
+          <div v-for="disco in dischi" v-if="genereSelezionato == 'TUTTI' || genereSelezionato == disco.genre" class="cd">
+            <img :src="disco.poster" alt="copertina">
+            <h3 class="title">{{disco.title}}</h3>
+            <span class="author">{{disco.author}}</span>
+            <span class="year">{{disco.year}}</span>
+          </div>
         </div>
 
         <script src="main.js" charset="utf-8"></script>
